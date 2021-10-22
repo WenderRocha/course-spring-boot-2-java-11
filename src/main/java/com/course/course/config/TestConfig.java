@@ -20,21 +20,17 @@ public class TestConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		User u1 = User.builder().id(null).name("claudio bernardo lorenzoda silva")
-				.email("claudiobernardolorenzodasilva_@sdrifs.com.br").phone("(16) 98605-9884").password("9bYZ9JXsl5")
-				.build();
+		User u1 = new User("claudio bernardo lorenzoda silva", "claudiobernardolorenzodasilva_@sdrifs.com.br",
+				"(16) 98605-9884", "9bYZ9JXsl5");
 
-		User u2 = User.builder().id(null).name("Fabiana Carolina Flávia Porto")
-				.email("ffabianacarolinaflaviaporto@isbt.com.br").phone("(51) 99793-0622").password("cQCbaoLa9S")
-				.build();
+		User u2 = new User("Fabiana Carolina Flávia Porto", "ffabianacarolinaflaviaporto@isbt.com.br",
+				"(51) 99793-0622", "cQCbaoLa9S");
 
-		User u3 = User.builder().id(null).name("Guilherme Anderson Marcos dos Santos")
-				.email("guilhermeandersonmarcosdossantos_@anfip.org.br").phone("(77) 98906-1888").password("6MJ4yh2wQp")
-				.build();
+		User u3 = new User("Guilherme Anderson Marcos dos Santos", "guilhermeandersonmarcosdossantos_@anfip.org.br",
+				"(77) 98906-1888", "6MJ4yh2wQp");
 
-		User u4 = User.builder().id(null).name("Yago Mário Benjamin Porto")
-				.email("yagomariobenjaminporto_@digitalsj.com.br").phone("(65) 98556-8234").password("Unc27ioXUY")
-				.build();
+		User u4 = new User("Yago Mário Benjamin Porto", "yagomariobenjaminporto_@digitalsj.com.br", "(65) 98556-8234",
+				"Unc27ioXUY");
 
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
 
