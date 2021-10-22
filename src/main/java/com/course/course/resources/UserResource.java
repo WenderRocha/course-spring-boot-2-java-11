@@ -16,8 +16,12 @@ public class UserResource {
 
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		User u1 = new User(1L, "Maria", "maria@gmail.com", "(19) 999810604", "123456");
-		User u2 = new User(2L, "Pedro", "pedro@gmail.com", "(19) 999887372", "1234232356");
+
+		User u1 = User.builder().id(1L).name("Wender").email("wender_dev@hotmail.com").phone("(19) 999810604")
+				.password("12345678").build();
+
+		User u2 = User.builder().id(2L).name("João").email("joaov@hotmail.com").phone("(19) 999610309")
+				.password("12345678").build();
 
 		return ResponseEntity.ok().body(Arrays.asList(u1, u2));
 
