@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -44,6 +46,7 @@ public class User implements Serializable {
 	@NonNull
 	private String password;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	@Setter(AccessLevel.NONE)
 	private List<Order> orders = new ArrayList<>();
