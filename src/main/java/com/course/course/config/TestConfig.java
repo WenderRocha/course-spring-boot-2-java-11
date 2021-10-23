@@ -1,5 +1,6 @@
 package com.course.course.config;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Arrays;
 
@@ -10,10 +11,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.course.course.entities.Category;
 import com.course.course.entities.Order;
+import com.course.course.entities.Product;
 import com.course.course.entities.User;
 import com.course.course.entities.enums.OrderStatus;
 import com.course.course.repositories.CategoryRepository;
 import com.course.course.repositories.OrderRepository;
+import com.course.course.repositories.ProductRepository;
 import com.course.course.repositories.UserRepository;
 
 @Configuration
@@ -29,12 +32,15 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+	@Autowired
+	private ProductRepository productRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 
-		Category cat1 = new Category(null, "Electronics");
-		Category cat2 = new Category(null, "Books");
-		Category cat3 = new Category(null, "Computers");
+		Category cat1 = new Category("Electronics");
+		Category cat2 = new Category("Books");
+		Category cat3 = new Category("Computers");
 
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 
@@ -51,6 +57,17 @@ public class TestConfig implements CommandLineRunner {
 				"Unc27ioXUY");
 
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
+
+		Product p1 = new Product("The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.",
+				new BigDecimal("90.5"), "");
+		Product p2 = new Product("Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", new BigDecimal("2190.0"), "");
+		Product p3 = new Product("Macbook Pro", "Nam eleifend maximus tortor, at mollis.", new BigDecimal("1250.0"),
+				"");
+		Product p4 = new Product("PC Gamer", "Donec aliquet odio ac rhoncus cursus.", new BigDecimal("1200.0"), "");
+		Product p5 = new Product("Rails for Dummies", "Cras fringilla convallis sem vel faucibus.",
+				new BigDecimal("100.99"), "");
+
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
 		Order o1 = new Order(null, Instant.parse("2021-10-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(null, Instant.parse("2021-09-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
