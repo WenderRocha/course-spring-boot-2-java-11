@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.course.course.entities.pk.OrderItemPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
@@ -29,19 +30,20 @@ public class OrderItem implements Serializable {
 	@Getter(AccessLevel.NONE)
 	@EqualsAndHashCode.Include
 	@EmbeddedId
-	private OrderItemPk id;
+	private OrderItemPk id = new OrderItemPk();
 
 	private Integer quantity;
 	private BigDecimal price;
 
-	public OrderItem(Order order, Product product, Integer quantity, BigDecimal price) {
+	public OrderItem(Order order, Product product, Integer quantity) {
 		super();
 		id.setOrder(order);
 		id.setProduct(product);
 		this.quantity = quantity;
-		this.price = price;
+		this.price = id.getProduct().getPrice();
 	}
 
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
