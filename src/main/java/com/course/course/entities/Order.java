@@ -1,6 +1,8 @@
 package com.course.course.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -73,6 +75,17 @@ public class Order implements Serializable {
 		if (orderStatus != null) {
 			this.orderStatus = orderStatus.getCode();
 		}
+	}
+
+	public BigDecimal getTotal() {
+
+		BigDecimal sum = BigDecimal.ZERO;
+
+		for (OrderItem x : items) {
+			sum = sum.add(x.getSubTotal());
+		}
+
+		return sum.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.course.course.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -58,6 +59,10 @@ public class OrderItem implements Serializable {
 
 	public void setProduct(Product product) {
 		id.setProduct(product);
+	}
+
+	public BigDecimal getSubTotal() {
+		return price.multiply(new BigDecimal(quantity.intValue())).setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 }

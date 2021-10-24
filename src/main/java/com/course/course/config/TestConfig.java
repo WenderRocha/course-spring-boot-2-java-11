@@ -63,13 +63,12 @@ public class TestConfig implements CommandLineRunner {
 		Category cat3 = new Category("Computers");
 
 		Product p1 = new Product("The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.",
-				new BigDecimal("90.5"), "");
-		Product p2 = new Product("Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", new BigDecimal("2190.0"), "");
-		Product p3 = new Product("Macbook Pro", "Nam eleifend maximus tortor, at mollis.", new BigDecimal("1250.0"),
-				"");
-		Product p4 = new Product("PC Gamer", "Donec aliquet odio ac rhoncus cursus.", new BigDecimal("1200.0"), "");
+				new BigDecimal(90.5), "");
+		Product p2 = new Product("Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", new BigDecimal(2190.0), "");
+		Product p3 = new Product("Macbook Pro", "Nam eleifend maximus tortor, at mollis.", new BigDecimal(1250.0), "");
+		Product p4 = new Product("PC Gamer", "Donec aliquet odio ac rhoncus cursus.", new BigDecimal(1200.0), "");
 		Product p5 = new Product("Rails for Dummies", "Cras fringilla convallis sem vel faucibus.",
-				new BigDecimal("100.99"), "");
+				new BigDecimal(100.99), "");
 
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
